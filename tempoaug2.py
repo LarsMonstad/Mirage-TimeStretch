@@ -22,11 +22,12 @@ def update_ann_file(ann_content, stretch_factor):
     for line in ann_content:
         parts = line.strip().split('\t')
         onset, offset, pitch, channel = parts
-        onset_new = float(onset) * stretch_factor
-        offset_new = float(offset) * stretch_factor
+        onset_new = float(onset) / stretch_factor
+        offset_new = float(offset) / stretch_factor
         updated_line = f"{onset_new:.3f}\t{offset_new:.3f}\t{pitch}\t{channel}"
         updated_content.append(updated_line)
     return updated_content
+
 
 
 # Apply time stretch to audio and annotation files
@@ -36,6 +37,8 @@ def apply_time_stretch(audio_file, ann_file, output_dir, stretch_factor):
 
     # Apply the time-stretch transformation directly
     time_stretched_samples = librosa.effects.time_stretch(samples, rate=stretch_factor)
+    #time_stretched_samples = librosa.effects.time_stretch(samples, rate=1/stretch_factor)
+
 
     # Print input and output shapes and the stretch factor
     print(f"Input samples shape: {samples.shape}")
