@@ -18,6 +18,7 @@ To install the required packages, run:
 
 ```bash
 pip install -r requirements.txt
+```
 
 Usage
 The script can be run from the command line with the following arguments:
@@ -28,9 +29,9 @@ output_directory: Path to the output directory
 stretch_factor: Time stretch factor (e.g., 1.4 for 40% faster, 0.8 for 20% slower)
 Example usage:
 
-bash
-Copy code
+```bash
 python tempoaug2.py input_audio_file.flac input_ann_file.ann output_directory 1.4
+```
 This will create a time-stretched version of the input audio and its annotations, and save the output files in the specified output directory.
 
 License
